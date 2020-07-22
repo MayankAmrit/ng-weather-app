@@ -1,0 +1,38 @@
+<div class="header">
+  <h2 style="color: aqua;">Check Weather </h2>
+</div>
+<form #form="ngForm" style="padding-top: 20px;">
+  <div class="search"  style="padding-left: 20px;">
+
+     <input type="number,text" [(ngModel)]="search" name="id" class="searchTerm" placeholder="Enter City">
+     <button (click)="send();form.reset();"class="searchButton" >
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
+
+  </div >
+</form>
+
+<mat-card *ngIf="val === true" class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{WeatherData.location.name}}</mat-card-title>
+    <mat-card-subtitle>{{WeatherData.location.country}}</mat-card-subtitle>
+    <mat-card-subtitle>Weather Details</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src={{image}} >
+  <mat-card-content>
+     <h1>
+       Temp:  {{WeatherData.current.temperature}}  celcius
+     </h1>
+     <h2 style="opacity: 0.5;">
+      Humidity:  {{WeatherData.current.humidity}} %<br>
+      Wind: {{WeatherData.current.wind_speed}} km/h
+     </h2>
+      <small>Feels Like :{{WeatherData.current.feelslike}}</small>
+    <p>
+      {{desc}}
+    </p>
+  </mat-card-content>
+
+</mat-card>
+
+
