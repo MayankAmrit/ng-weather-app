@@ -19,7 +19,7 @@ val :boolean;
 
 send()
 {
-  fetch('http://api.weatherstack.com/current?access_key=a50f0f7120f11acade30b82181caf03c&query=http://api.weatherstack.com/current?access_key=a50f0f7120f11acade30b82181caf03c&query='+this.search)
+  fetch('http://api.weatherstack.com/current?access_key=a50f0f7120f11acade30b82181caf03c&query='+this.search)
     .then(response=>response.json())
     .then(data=>{this.setWeatherData(data);})
 }
