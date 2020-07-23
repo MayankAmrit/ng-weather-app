@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {NgModule} from '@angular/core';
 import { FormsModule }   from '@angular/forms';
+import {ReactiveFormsModule} from '@angular/forms';
 import {A11yModule} from '@angular/cdk/a11y';
 import {ClipboardModule} from '@angular/cdk/clipboard';
 import {DragDropModule} from '@angular/cdk/drag-drop';
@@ -48,6 +49,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTreeModule} from '@angular/material/tree';
 import {OverlayModule} from '@angular/cdk/overlay';
 import { MainComponent } from './main/main.component';
+import {GetdataService} from './getdata.service';
+import {HttpClientModule} from '@angular/common/http';
+import { from } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -105,8 +109,11 @@ import { MainComponent } from './main/main.component';
     PortalModule,
     ScrollingModule,
     FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+
   ],
-  providers: [],
+  providers: [GetdataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

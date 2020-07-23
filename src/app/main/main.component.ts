@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GetdataService } from '../getdata.service';
 
 @Component({
   selector: 'app-main',
@@ -11,7 +12,7 @@ WeatherData: any;
 image :string;
 desc :string;
 val :boolean;
-  constructor() { }
+  constructor(private service: GetdataService) { }
 
   ngOnInit(): void {
    this.val=false;
@@ -19,11 +20,12 @@ val :boolean;
 
 send()
 {
-  fetch('http://api.weatherstack.com/current?access_key=a50f0f7120f11acade30b82181caf03c&query='+this.search)
-    .then(response=>response.json())
-    .then(data=>{this.setWeatherData(data);})
+  this.service.getweather(this.search).subscribe((data) =>{this.setWeatherData(data);});
+
 }
-  setWeatherData(data: any) {
+  setWeatherData(data: any)
+   {
+    console.log(data);
     this.WeatherData = data;
     this.val=true;
     this.image= this .WeatherData.current.weather_icons[0];
